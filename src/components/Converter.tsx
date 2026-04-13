@@ -46,7 +46,8 @@ export default function Converter() {
     
     try {
       // Real API call to the backend
-      const res = await fetch("/api/convert", {
+      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      const res = await fetch(`${backendUrl}/api/convert`, {
         method: "POST",
         body: formData,
       });

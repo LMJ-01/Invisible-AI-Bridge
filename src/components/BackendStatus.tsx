@@ -10,7 +10,8 @@ export default function BackendStatus() {
   useEffect(() => {
     async function checkHealth() {
       try {
-        const res = await fetch('/api/health');
+        const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+        const res = await fetch(`${backendUrl}/api/health`);
         if (res.ok) {
           const data = await res.json();
           setStatus('ok');
